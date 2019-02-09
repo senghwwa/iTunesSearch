@@ -7,8 +7,9 @@ class StoreItemListTableViewController: UITableViewController {
     @IBOutlet weak var filterSegmentedControl: UISegmentedControl!
     
     // add item controller property
+    let storeItemController = StoreItemController()
     
-    var items = [String]()
+    var items = [StoreItem]()
     
     let queryOptions = ["movie", "music", "software", "ebook"]
     
@@ -28,10 +29,27 @@ class StoreItemListTableViewController: UITableViewController {
         if !searchTerm.isEmpty {
             
             // set up query dictionary
+            let query: [String: String] = [
+                "term": searchTerm,
+                "media": mediaType,
+                "lang": "en_us",
+                "limit": "10"
+            ]
             
             // use the item controller to fetch items
             // if successful, use the main queue to set self.items and reload the table view
             // otherwise, print an error to the console
+            storeItemController.fetchItems(matching: query) { (items) in
+                if let items = items {
+                    DispatchQueue.main.async {
+                        self.items = items
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    print("Problem retrieving data. Either no data or not serialized")
+                }
+            }
+
         }
     }
     
@@ -39,15 +57,27 @@ class StoreItemListTableViewController: UITableViewController {
         
         let item = items[indexPath.row]
         
-        cell.textLabel?.text = item
-        
         // set label to the item's name
         // set detail label to the item's subtitle
         // reset the image view to the gray image
-        
+        cell.textLabel?.text = item.name
+        cell.detailTextLabel?.text = item.description
+        cell.imageView?.image = UIImage(named: "gray")
         // initialize a network task to fetch the item's artwork
-        // if successful, use the main queue capture the cell, to initialize a UIImage, and set the cell's image view's image to the 
+        // if successful, use the main queue capture the cell, to initialize a UIImage, and set the cell's image view's image to the
+        let task = URLSession.shared.dataTask(with: item.artworkURL,
+                    completionHandler: { (data, response, error) in
+                    if let data = data,
+                        let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                cell.imageView?.image = image
+                            }
+                        }
+                    }
+        )
+        
         // resume the task
+        task.resume()
     }
     
     @IBAction func filterOptionUpdated(_ sender: UISegmentedControl) {
