@@ -25,7 +25,6 @@
 		6881F3BE1E66032600E14215 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6881F3C41E66033D00E14215 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6881F3C81E66034A00E14215 /* StoreItemListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreItemListTableViewController.swift; sourceTree = "<group>"; };
-		6881F3CE1E66480200E14215 /* iTunesSearch.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = iTunesSearch.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7C81A382220E7FA200786873 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		7C81A384220E825600786873 /* URLplusHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLplusHelpers.swift; sourceTree = "<group>"; };
 		7C81A386220E839E00786873 /* StoreItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemController.swift; sourceTree = "<group>"; };
@@ -66,7 +65,6 @@
 				6881F3C41E66033D00E14215 /* Main.storyboard */,
 				6881F3B91E66032600E14215 /* Assets.xcassets */,
 				6881F3BB1E66032600E14215 /* LaunchScreen.storyboard */,
-				6881F3CE1E66480200E14215 /* iTunesSearch.playground */,
 				6881F3BE1E66032600E14215 /* Info.plist */,
 				7C81A382220E7FA200786873 /* StoreItem.swift */,
 				7C81A384220E825600786873 /* URLplusHelpers.swift */,
