@@ -28,7 +28,7 @@ class StoreItemController {
                 let json = rawJSON as? [String: Any],
                 let resultsArray = json["results"] as? [[String: Any]] {
                 
-                let storeItems = resultsArray.flatMap { StoreItem(json: $0) }
+                let storeItems = resultsArray.compactMap { StoreItem(json: $0) }
                 completion(storeItems)
                 
             } else {
